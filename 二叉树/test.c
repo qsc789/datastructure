@@ -11,7 +11,7 @@ typedef struct BinaryTreeNode
 	BTDataType data;
 
 }BTNode;
-void PrevOrder(BTNode* root)//Ç°Ðò
+void PrevOrder(BTNode* root)//Ç°ï¿½ï¿½
 {
 	if (root == NULL)
 	{
@@ -19,10 +19,10 @@ void PrevOrder(BTNode* root)//Ç°Ðò
 		return;
 	}
 	printf("%c ", root->data);
-	PrevOrder(root->left);//µÝ¹é
+	PrevOrder(root->left);//ï¿½Ý¹ï¿½
 	PrevOrder(root->right);
 }
-void InOrder(BTNode* root)//ÖÐÐò
+void InOrder(BTNode* root)//ï¿½ï¿½ï¿½ï¿½
 {
 	if (root == NULL)
 	{
@@ -30,11 +30,11 @@ void InOrder(BTNode* root)//ÖÐÐò
 		return;
 	}
 	
-	InOrder(root->left);//µÝ¹é
+	InOrder(root->left);//ï¿½Ý¹ï¿½
 	printf("%c ", root->data);
 	InOrder(root->right);
 }
-void PostOrder(BTNode* root)//ºóÐò
+void PostOrder(BTNode* root)//ï¿½ï¿½ï¿½ï¿½
 {
 	if (root == NULL)
 	{
@@ -42,7 +42,7 @@ void PostOrder(BTNode* root)//ºóÐò
 		return;
 	}
 	
-	PostOrder(root->left);//µÝ¹é
+	PostOrder(root->left);//ï¿½Ý¹ï¿½
 	PostOrder(root->right);
 	printf("%c ", root->data);
 }
@@ -78,7 +78,7 @@ int TreeLeafSize(BTNode* root)
 	return TreeLeafSize(root->left) + TreeLeafSize(root->right);
 }
 
-void LevelOrder(BTNode* root)//¶ÓÁÐ ²ãÐò
+void LevelOrder(BTNode* root)//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 {
 	Queue q;
 	QueueInit(&q);
@@ -90,9 +90,9 @@ void LevelOrder(BTNode* root)//¶ÓÁÐ ²ãÐò
 	while (!QueueEmpty(&q))
 	{
 
-		//ºËÐÄË¼Â·£ºÉÏÒ»²ã³öµÄÊ±ºò´øÏÂÒ»²ã½Úµã½ø
+		//ï¿½ï¿½ï¿½ï¿½Ë¼Â·ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Úµï¿½ï¿½
 		BTNode* front = QueueFront(&q);
-		QueuePop(&q);//°ÑµÚÒ»¸ö½Úµã´Ó¶ÓÁÐÀïÈ¡³öÀ´
+		QueuePop(&q);//ï¿½Ñµï¿½Ò»ï¿½ï¿½ï¿½Úµï¿½Ó¶ï¿½ï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
 		printf("%c ", front->data);
 
 		if (front->left != NULL)
@@ -106,6 +106,19 @@ void LevelOrder(BTNode* root)//¶ÓÁÐ ²ãÐò
 	}
 	printf("\n");
 	QueueDestory(&q);
+}
+void DestoryTree(BTNode* root)
+{
+	if (root == NULL)
+	{
+		return;
+	}
+	DestoryTree(root->left);
+	DestoryTree(root->right);
+
+	free(root);
+	root = NULL;
+
 }
 int main()
 {
