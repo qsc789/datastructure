@@ -15,13 +15,13 @@ void StackDestroy(ST* ps)
 	ps->a = NULL;
 	ps->capacity = ps->top = 0;
 }
-void StackPush(ST* ps, STDataType x)//½øÊý¾Ý
+void StackPush(ST* ps, STDataType x)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 	assert(ps);
-	if (ps->top == ps->capacity)//À©ÈÝ
+	if (ps->top == ps->capacity)//ï¿½ï¿½ï¿½ï¿½
 	{
 		int newCapacity = (ps->capacity == 0 ? 4 : ps->capacity * 2);
-		STDataType* tmp = realloc(ps->a, sizeof(STDataType) * newCapacity);//À©ÈÝ
+		STDataType* tmp = (STDataType*)realloc(ps->a, sizeof(STDataType) * newCapacity);//ï¿½ï¿½ï¿½ï¿½
 		if (tmp == NULL)
 		{
 			printf("realloc fail\n");
@@ -34,14 +34,14 @@ void StackPush(ST* ps, STDataType x)//½øÊý¾Ý
 	ps->top++;
 }
 
-void StackPop(ST* ps)//³öÊý¾Ý
+void StackPop(ST* ps)//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 	assert(ps);
 	assert(ps->top > 0);
 	ps->top--;
 }
 
-STDataType StackTop(ST* ps)//È¡Õ»¶¥Êý¾Ý
+STDataType StackTop(ST* ps)//È¡Õ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 {
 	assert(ps);
 	assert(!StackEmpty(ps));
@@ -52,8 +52,8 @@ int StackSize(ST* ps)
 	assert(ps);
 	return ps->top;
 }
-bool StackEmpty(ST* ps)//ÅÐ¶ÏÕ»ÊÇ·ñÎª¿Õ
+bool StackEmpty(ST* ps)//ï¿½Ð¶ï¿½Õ»ï¿½Ç·ï¿½Îªï¿½ï¿½
 {
-	assert(ps);//¶ÏÑÔ
-	return ps->top == 0;//·´µÄ
+	assert(ps);//ï¿½ï¿½ï¿½ï¿½
+	return ps->top == 0;//ï¿½ï¿½ï¿½ï¿½
 }
